@@ -13,31 +13,6 @@
 * [Actions support](#actions)
 * Extensible through [patches](https://github.com/dudik/herbe/pulls?q=is%3Aopen+is%3Apr+label%3Apatch)
 
-## Table of contents
-
-* [Usage](#usage)
-  * [Patches](#patches)
-  * [Dismiss a notification](#dismiss-a-notification)
-  * [Actions](#actions)
-  * [Newlines](#newlines)
-  * [Multiple notifications](#multiple-notifications)
-  * [Notifications don't show up](#notifications-dont-show-up)
-* [Installation](#installation)
-  * [Packages](#packages)
-  * [Dependencies](#dependencies)
-  * [Build](#build)
-* [Configuration](#configuration)
-* [Contribute](#contribute)
-
-## Usage
-
-### Patches
-[List of available patches](https://github.com/dudik/herbe/pulls?q=is%3Aopen+is%3Apr+label%3Apatch)
-
-To create a new patch you'll have to open a pull request with your changes. Append `.diff` to the pull request URL to get a downloadable diff file. Don't forget to prefix the title with `patch:` and to apply the `patch` label to it. For inspiration, look at [my Xresources patch](https://github.com/dudik/herbe/pull/11). Thank you.
-
-_Note: This patching method was heavily inspired by [dylan's sowm](https://github.com/dylanaraps/sowm)._
-
 ### Dismiss a notification
 A notification can be dismissed either by clicking on it with `DISMISS_BUTTON` (set in config.h, defaults to left mouse button) or sending a `SIGUSR1` signal to it:
 ```shell
@@ -95,45 +70,17 @@ $ pkill -SIGUSR2 herbe
 ```
 And you should be fine. That's all you really need to interact with `herbe`.
 
-## Installation
-### Packages
-[![Packaging status](https://repology.org/badge/vertical-allrepos/herbe.svg)](https://repology.org/project/herbe/versions)
-
-[OpenBSD patch](https://github.com/dudik/herbe/pull/4)
-
-[FreeBSD patch](https://github.com/dudik/herbe/pull/16)
-
-[Wayland port](https://github.com/muevoid/Wayherb) by [muevoid](https://github.com/muevoid)
-
-**Only the [herbe-git AUR package](https://aur.archlinux.org/packages/herbe-git/) is maintained by me.**
-
 ### Dependencies
 * X11 (Xlib)
 * Xft
 
-The names of packages are different depending on which distribution you use.
-For example, if you use [Void Linux](https://voidlinux.org/) you will have to install these dependencies:
-```shell
-sudo xbps-install base-devel libX11-devel libXft-devel
-```
-
 ### Build
 ```shell
-git clone https://github.com/dudik/herbe
-cd herbe
-sudo make install
+doas make install
 ```
 `make install` requires root privileges because it copies the resulting binary to `/usr/local/bin`. This makes `herbe` accessible globally.
 
 You can also use `make clean` to remove the binary from the build folder, `sudo make uninstall` to remove the binary from `/usr/local/bin` or just `make` to build the binary locally.
 
 ## Configuration
-herbe is configured at compile-time by editing `config.h`. Every option should be self-explanatory. There is no `height` option because height is determined by font size and text padding.
-
-[Xresources patch](https://github.com/dudik/herbe/pull/11)
-
-## Contribute
-If you want to report a bug or you have a feature request, feel free to [open an issue](https://github.com/dudik/herbe/issues).
-
-## Projects with herbe integration
-- [qutebrowser](https://qutebrowser.org/) supports showing web notifications via herbe, via the `content.notifications.presenter` setting.
+My configuration just consists of using Fira Mono Nerd Font and the Tokyonight color pallete. I suggest checking out the original repository if you are looking to make any changes/your own config.
